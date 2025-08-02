@@ -49,7 +49,6 @@ class ModelLoader(BaseModel):
                 azure_endpoint=self.config['llm']['openai']['end_point'],
                 api_version=self.config['llm']['openai']['api_version']
             )
-
         return llm
 
 
