@@ -17,6 +17,9 @@ class Graphbuilder():
         """
         self.tools={
             #weatherInfotool 
+            #Place search tool 
+            # calculator tool 
+            # currenctconvertertool 
 
         } 
         self.system_prompt=SYSTEM_PROMPT
