@@ -19,7 +19,7 @@ if 'messages' not in st.session_state:
     st.session_state.messages=[]
 
 # display chat history 
-st.header('How caan i help you plan a trip? Let me know where do you want to visit')
+st.header('How can i help you plan a trip? Let me know where do you want to visit')
 
 with st.form(key='query_form',clear_on_submit=True):
     user_input=st.text_input('User Input',placeholder='e.g. Plan a trip to Goa for 5 days')
@@ -52,9 +52,3 @@ if submit_button and user_input.strip():
     except Exception as e:
         raise f'The response failed due to {e}'
 
-#  def main():
-#     print("Hello from planmytrip!")
-
-
-# if __name__ == "__main__":
-#     main()

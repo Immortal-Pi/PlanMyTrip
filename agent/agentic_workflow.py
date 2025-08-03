@@ -5,28 +5,39 @@ from langgraph.graph import StateGraph, MessagesState, END, START
 from langgraph.prebuilt import ToolNode, tools_condition
 from prompt_library.prompt import SYSTEM_PROMPT 
 
-# from tools.weather_info_tool import WeatherInfoTool 
-# from tools.place_search_tool import PlaceSearchTool 
-# from tools.expense_calculator_tool import CalculatorTool 
-# from tools.currency_conversion_tool import CurrencyConverterTool 
+from tools.weather_info_tool import WeatherInfoTool 
+from tools.place_search_tool import PlaceSearchTool 
+from tools.expense_calculator_tool import CalculatorTool 
+from tools.currency_conversion_tool import CurrencyConverterTool 
 
 class Graphbuilder():
-    def __init__(self):
+    def __init__(self,model_provider:str='groq'):
         """ 
         constructor which will get initialized during start
         """
-        self.tools={
-            #weatherInfotool 
-            #Place search tool 
-            # calculator tool 
-            # currenctconvertertool 
-
-        } 
+        self.model_loader=ModelLoader(model_provider=model_provider)
+        self.llm=self.model_loader.load_llm()
+        self.tools=[]
+        self.weather_tools=WeatherInfoTool()
+        self.calculator_tools=CalculatorTool()
+        self.place_search_tools=PlaceSearchTool()
+        self.currency_converter_tools=CurrencyConverterTool()
+        
+       
+        # unpacking all the list of tools into one list 
+        self.tools.extend([* self.weather_tools.weather_tool_list,
+                           * self.place_search_tools.place_search_tool_list,
+                           * self.calculator_tools.calculator_tool_list,
+                           * self.currency_converter_tools.currency_converter_tool_list
+                           ])
+        
         self.system_prompt=SYSTEM_PROMPT
+        self.graph=None 
+    
 
     def agent_function(self,state:MessagesState):
         """ 
-        Main agent funciton
+        Main agent function 
         """ 
         user_question=state['messages']
         input_question=[self.system_prompt] + user_question 
