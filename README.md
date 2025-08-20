@@ -6,3 +6,12 @@
 5. itinerary 
 6. total expences 
 7. generate a summary 
+
+
+``` 
+streamlit run streamlit_app.py 
+```
+
+```
+uvicorn main:app --reload --port 8000
+```
