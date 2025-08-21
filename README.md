@@ -5,7 +5,7 @@ A lightweight, full-stack agent that builds personalized travel itineraries with
 Frontend is a static HTML/JS chat; backend is FastAPI with an agentic workflow.
 
 ## Architecture
-![Architecture](/assets/Blank diagram.png)
+![Architecture](/assets/'Blank diagram.png')
 
 ## UI
 ![AI Travel Planner graph](/assets/demo.gif)
